@@ -182,3 +182,23 @@ mo = phoneNumRegex.findall('Cell:415-555-9999 Work:212-555-0000')
 print(mo)
 
 # something changed here...
+
+print('字符分类')
+xmasRegex = re.compile(r'\d+\s\w+')
+xo = xmasRegex.findall('12 drummers, 11 pipers, 10 lords, 9 ladies, 8 maids, 7 swans, 6 geese, 5 rings, 4 birds, 4 hens, 2 doves, 1 partridge')
+print(xo)
+# \d+\s\w+匹配一个或多个数字，然后跟一个空格，然后跟一个或多个字符
+
+print('建立自己的字符分类')
+vowelRegex = re.compile(r'[aeiouAEIOU]')
+# 匹配所有的元音字符，且不区分大小写
+vo = vowelRegex.findall('RoboCop eats baby food. BABY FOOD.')
+print(vo)
+# 短横线表示字母或者数字的范围，[a-zA-Z0-9]匹配所有的小写字母，大写字母，数字
+# 这种括号里面的正则表达式符号不会被解释，即不需要在前面加上斜杠转译
+# 左方括号后加一个(^)这个小尖尖，可以匹配不在这个字符类中的所有字符
+print('加上小尖尖')
+consonantRegex = re.compile(r'[^aeiouAEIOU]')
+co = consonantRegex.findall('RoboCop eats baby food. BABY FOOD.')
+print(co)
+# 即现在匹配所有的非元音字符，包括空格什么的
