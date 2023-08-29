@@ -163,3 +163,22 @@ mo2 = nongreedyHaRegex.search('HaHaHaHaHa')
 print(mo2.group())
 
 # 新增一条备注，验证github上传情况
+
+# findall()方法
+# 返回一组字符串，包含被查找字符串中所有匹配的文本
+print("findall()方法")
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex.search('Cell:415-555-9999 Work:212-555-0000')
+print(mo.group())
+print('没有分组的情况')
+# 返回一个字符串列表
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex.findall('Cell:415-555-9999 Work:212-555-0000')
+print(mo)
+print('有分组的情况')
+# 返回一个元祖列表
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')
+mo = phoneNumRegex.findall('Cell:415-555-9999 Work:212-555-0000')
+print(mo)
+
+# something changed here...
