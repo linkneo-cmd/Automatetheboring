@@ -202,3 +202,60 @@ consonantRegex = re.compile(r'[^aeiouAEIOU]')
 co = consonantRegex.findall('RoboCop eats baby food. BABY FOOD.')
 print(co)
 # 即现在匹配所有的非元音字符，包括空格什么的
+
+print('插入字符和美元字符')
+# 匹配以Hello开始的字符串
+beginsWithHello = re.compile(r'^Hello')
+bo = beginsWithHello.search('Hello World!')
+print(bo.group())
+bo2 = beginsWithHello.search('He said Hello')
+print(bo2)
+# 匹配以数字0～9结束的字符串
+endsWithNumber = re.compile(r'\d$')
+eo = endsWithNumber.search('Your number is 42')
+print(eo.group())
+eo2 = endsWithNumber.search('Your number is forty two')
+print(eo2)
+# 匹配从开始到结束都是数字的字符串
+wholeStringIsNum = re.compile(r'^\d+$')
+wo = wholeStringIsNum.search('1234567890')
+wo2 = wholeStringIsNum.search('12345xyz67890')
+wo3 = wholeStringIsNum.search('12 34567890')
+print(wo)
+print(wo2)
+print(wo3)
+
+print('通配字符句点(.)')
+# 匹配换行符之外的所有字符
+atRegex = re.compile(r'.at')
+ao = atRegex.findall('The cat in the hat sat on the flat mat')
+print(ao)
+# 句点只会匹配一个字符，对于真正的句点，使用倒斜杠转译
+
+print('用点-星匹配所有字符')
+nameRegex = re.compile(r'First Name:(.*)Last Name:(.*)')
+mo = nameRegex.search('First Name:11 AI 22Last Name:33 Sweigart 44')
+print(mo.group(1))
+print(mo.group(2))
+# 点-星是贪心模式的，要用非贪心模式，需要使用点-星和问号
+nongreedyHaRegex = re.compile(r'<.*?>')
+mo = nongreedyHaRegex.search('<To serve man> for dinner.>')
+print(mo.group())
+greedyHaRegex = re.compile(r'<.*>')
+mo = greedyHaRegex.search('<To serve man> for dinner.>')
+print(mo.group())
+# 非贪心中，匹配尽可能短的字符串，贪心中，匹配尽可能长的字符串
+
+print('传入re.DOTALL作为re.compile的第二个参数，可以让句点字符匹配所有字符，包括换行符')
+noNewlineRegex = re.compile(r'.*')
+no = noNewlineRegex.search('Serve the public trust.\nProtect the innocent.\nUpload the law.')
+print(no.group())
+newlineRegex = re.compile(r'.*',re.DOTALL)
+no2 = newlineRegex.search('Serve the public trust.\nProtect the innocent.\nUpload the law.')
+print(no2.group())
+newlineRegex = re.compile(r'item\\n4')
+no3 = newlineRegex.search('item\\n4')
+print(no3.group())
+newlineRegex = re.compile('item\\n4')
+no4 = newlineRegex.search('item\\n4')
+print(no4.group())
