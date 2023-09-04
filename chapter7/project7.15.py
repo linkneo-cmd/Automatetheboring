@@ -52,7 +52,7 @@ else:
     print("No phone numbers or email addresses found.")
 
 # 复制test.txt中的内容到剪切板，运行后输出结果
-'''
+''' 
 Copied to clipboard:
 -010-4093
 800-420-7240
@@ -69,3 +69,15 @@ editors@nostarch.com
 rights@nostarch.com
 support@nostarch.com
 '''
+
+print('try2')
+allnumberandxiaoxie = re.compile(r'[0-9a-z]+')
+ao = allnumberandxiaoxie.search('asdifuhouwqehcshni9736423JSKH')
+print(ao.group())
+
+print('匹配金额')
+re.compile(r'^\d{1,3}(,{3})*$')
+print('匹配句子')
+name = re.compile(r'(Alice|Bob|Carol)\s(eats|pets|throws)\s(apples|cats|baseablls)\.',re.IGNORECASE)
+no = name.search('Bob eatS Apples.')
+print(no.group())
