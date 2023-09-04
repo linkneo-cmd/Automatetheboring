@@ -18,3 +18,10 @@ sub()方法返回的就是替换完成后的字符串
 ### 管理复杂的正则表达式
 re.VERBOSE作为第二参数
 re.compile(r.''' ''')可以将正则表达式定义在多行中，更有可读性
+
+## 逐渐变成杂乱笔记......
+### 解决git推送失败问题
+https://devpress.csdn.net/cloud-native/64f05117e0aa6850f5a200b4.html?dp_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQ1NDg1MSwiZXhwIjoxNjk0NDQyNjU4LCJpYXQiOjE2OTM4Mzc4NTgsInVzZXJuYW1lIjoid2VpeGluXzQ1OTM2MTI5In0.cV4l38KgUKk1tni-cRPafDo5OktHWWaNjgOMm_-lqR0
+
+针对问题：
+git报错fatal: unable to access ‘https://github.com/.../.git‘:Recv failure Connection was reset
