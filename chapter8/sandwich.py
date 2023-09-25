@@ -56,7 +56,6 @@ menuText = ['输入面包类型:',
 order = []
 totalCost = 0
 
-
 def pyIP(text, choice, yn):
     if text:
         print(text)
