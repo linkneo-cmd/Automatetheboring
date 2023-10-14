@@ -8,6 +8,7 @@
 import random, time
 numbersOfQuestions = 10
 correctAnswers = 0
+starttime = 0
 for questionNumber in range(numbersOfQuestions):
     # 生成两个随机数
     num1 = random.randint(0,9)
@@ -16,12 +17,22 @@ for questionNumber in range(numbersOfQuestions):
     prompt = '#%s: %s x %s = ' % (questionNumber + 1, num1, num2)
     print(prompt)
     while(times < 3):
-        answer = input()
-        answer = int(answer)
+        if(starttime == 0):
+            starttime = time.time()
+        while(True):
+            answer = input()
+            try:
+                answer = int(answer)
+                break
+            except ValueError:
+                print('Not a number, please try again.')
         if(answer == num1*num2):
             print("Correct!")
             time.sleep(1)
             correctAnswers += 1
+            break
+        elif((time.time()-starttime)>=8):
+            print('Time\'s up.')
             break
         else:
             times += 1
